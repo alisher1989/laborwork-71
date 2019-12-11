@@ -11,7 +11,7 @@ QUOTE_STATUS_CHOICES = (
 
 class Quote(models.Model):
     text = models.TextField(max_length=2000, verbose_name='Текст цитаты')
-    created_at = models.DateTimeField(auto_now=True, verbose_name='Дата добавления')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
     status = models.CharField(max_length=20, choices=QUOTE_STATUS_CHOICES, default=QUOTE_NEW, verbose_name='Статус')
     author_name = models.CharField(max_length=50, verbose_name='Кто добавил')
     author_email = models.EmailField(verbose_name='Email')
