@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -37,6 +36,13 @@ class QuoteViewSet(ModelViewSet):
     def rate_up(self, request, pk=None):
         quote = self.get_object()
         quote.rating += 1
+        quote.save()
+        return Response({'id': quote.pk, 'rating': quote.rating})
+
+    @action(methods=['post'], detail=True)
+    def rate_down(self, request, pk=None):
+        quote = self.get_object()
+        quote.rating -= 1
         quote.save()
         return Response({'id': quote.pk, 'rating': quote.rating})
 

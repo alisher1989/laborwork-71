@@ -15,7 +15,7 @@ class Quote(models.Model):
     status = models.CharField(max_length=20, choices=QUOTE_STATUS_CHOICES, default=QUOTE_NEW, verbose_name='Статус')
     author_name = models.CharField(max_length=50, verbose_name='Кто добавил')
     author_email = models.EmailField(verbose_name='Email')
-    ration = models.IntegerField(default=0, verbose_name='Рейтинг')
+    rating = models.IntegerField(default=0, verbose_name='Рейтинг')
 
     def __str__(self):
         return self.text[:20] + '...'
